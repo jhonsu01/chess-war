@@ -1,0 +1,98 @@
+{
+ "matches": [
+  {
+   "id": "20260928-171033-laya-vs-jev",
+   "date": "2026-09-28T17:10:33+00:00",
+   "status": "finished",
+   "p1": "laya",
+   "p2": "jev",
+   "players": {
+    "laya": {
+     "name": "laya",
+     "label": "LAYA",
+     "colour": "#36c5f0",
+     "detail": "laya-typed-decisions · 421M · local cuda"
+    },
+    "jev": {
+     "name": "jev",
+     "label": "JEV",
+     "colour": "#ff7a3c",
+     "detail": "jev-latest · TypeSafe API"
+    }
+   },
+   "summary": {
+    "laya": {
+     "points": 4.0,
+     "wins": 0,
+     "draws": 8,
+     "losses": 2,
+     "decisions": 237,
+     "forced": 9,
+     "latency_ms_mean": 334.3,
+     "latency_ms_p50": 354.7,
+     "latency_ms_p95": 546.2,
+     "model_ms_mean": 332.6,
+     "overridden_pct": 24.9,
+     "overrides": 59,
+     "fallbacks": 0,
+     "errors": 0,
+     "input_tokens": 489960,
+     "output_tokens": 0,
+     "cost_usd": 0.0,
+     "time_used_s": 79.2,
+     "confidence_mean": 0.033,
+     "acpl_raw": 257.7,
+     "acpl": 193.4,
+     "blunders_raw": 63,
+     "served_by": "laya-rl-agent"
+    },
+    "jev": {
+     "points": 6.0,
+     "wins": 2,
+     "draws": 8,
+     "losses": 0,
+     "decisions": 246,
+     "forced": 0,
+     "latency_ms_mean": 241.1,
+     "latency_ms_p50": 234.3,
+     "latency_ms_p95": 281.9,
+     "model_ms_mean": 240.7,
+     "overridden_pct": 0.4,
+     "overrides": 1,
+     "fallbacks": 0,
+     "errors": 0,
+     "input_tokens": 693738,
+     "output_tokens": 170037,
+     "cost_usd": 0.029137,
+     "time_used_s": 59.3,
+     "confidence_mean": 0.707,
+     "acpl_raw": 165.7,
+     "acpl": 165.1,
+     "blunders_raw": 38,
+     "served_by": "jev-1.13.0"
+    }
+   },
+   "engine": "Stockfish 15.1",
+   "games": 10,
+   "results": [
+    "1/2-1/2",
+    "1-0",
+    "1/2-1/2",
+    "1/2-1/2",
+    "1/2-1/2",
+    "1-0",
+    "1/2-1/2",
+    "1/2-1/2",
+    "1/2-1/2",
+    "1/2-1/2"
+   ],
+   "config": {
+    "games": 10,
+    "clock_s": 180.0,
+    "max_plies": 240,
+    "shield": true,
+    "laya_checkpoint": null
+   }
+  }
+ ]
+}

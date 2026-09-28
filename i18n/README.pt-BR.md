@@ -6,6 +6,8 @@ Xadrez em pixel art entre dois modelos de decisão **System One** que recebem **
 
 **▶ Assista aos replays (10 idiomas): https://jhonsu01.github.io/chess-war/?lang=pt**
 
+![Visualizador do Chess War: Jev dá mate em Laya na partida 2](../docs/assets/screenshot.png)
+
 | | **Laya** | **Jev** |
 | --- | --- | --- |
 | Tipo | pesos abertos (Apache 2.0) | API hospedada |
@@ -18,8 +20,18 @@ Xadrez em pixel art entre dois modelos de decisão **System One** que recebem **
 Atualizados automaticamente pelo `chess-war publish`. Latência, escudo e ACPL aparecem como *Laya / Jev* (menor é melhor).
 
 <!-- RESULTS:START -->
-_Ainda não há confrontos publicados._
+| Data | Confronto | Pontos | Latência p50 | Escudo (OVERRIDDEN) | ACPL bruto | Custo | Replay |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-09-28 | LAYA vs JEV | **4 – 6** | 355 ms / 234 ms | 24.9% / 0.4% | 258 / 166 | $0.0291 | [ver](https://jhonsu01.github.io/chess-war/?m=20260928-171033-laya-vs-jev&lang=pt) |
 <!-- RESULTS:END -->
+
+### Primeiro confronto · 2026-09-28
+
+- **Jev venceu por 6–4** em 10 partidas: 2 vitórias por xeque-mate, 8 empates, nenhuma derrota. A Laya não venceu nenhuma partida.
+- **Jev foi mais rápido**, mesmo pela internet: p50 de 234 ms contra 355 ms da Laya na GPU local. Cada lance faz ~15 perguntas e a Laya roda uma passada do encoder por pergunta.
+- **Julgamento:** o escudo teve de corrigir 24,9% dos lances da Laya e 0,4% dos do Jev. ACPL bruto (Stockfish profundidade 12): Laya 258, Jev 166; erros graves de 300+ cp: 63 contra 38.
+- **Custo:** o Jev gastou US$ 0,029 com 694 mil tokens de entrada; a Laya rodou de graça.
+- **8 de 10 partidas terminaram por repetição tripla:** os dois modelos são determinísticos e repetem posições quando ninguém ganha material. Além disso, a Laya continuou passeando com o rei na abertura apesar do rótulo `bad`.
 
 ## Como funciona
 

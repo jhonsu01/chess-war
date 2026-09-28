@@ -498,8 +498,10 @@ async function init() {
   }
   applyTitles();
   fillGameSelect();
-  setGame(0);
-  play(true);
+  // ?g=<game number>&ply=<n> opens a specific moment (shareable links); otherwise autoplay
+  setGame(Math.max(0, Math.min(rep.games.length - 1, Number(params.get("g") || 1) - 1)));
+  if (params.has("ply")) setPly(params.get("ply") === "end" ? plies().length : Number(params.get("ply")));
+  else play(true);
 }
 
 init();

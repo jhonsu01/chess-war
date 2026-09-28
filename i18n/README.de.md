@@ -6,6 +6,8 @@ Pixel-Art-Schach zwischen zwei **System-One**-Entscheidungsmodellen, die Zug um 
 
 **▶ Wiederholungen ansehen (10 Sprachen): https://jhonsu01.github.io/chess-war/?lang=de**
 
+![Chess-War-Viewer: Jev setzt Laya in Partie 2 matt](../docs/assets/screenshot.png)
+
 | | **Laya** | **Jev** |
 | --- | --- | --- |
 | Art | offene Gewichte (Apache 2.0) | gehostete API |
@@ -18,8 +20,18 @@ Pixel-Art-Schach zwischen zwei **System-One**-Entscheidungsmodellen, die Zug um 
 Werden von `chess-war publish` automatisch aktualisiert. Latenz, Schild und ACPL stehen als *Laya / Jev* da (niedriger ist besser).
 
 <!-- RESULTS:START -->
-_Noch keine veröffentlichten Matches._
+| Datum | Match | Punkte | p50-Latenz | Schild (OVERRIDDEN) | Roh-ACPL | Kosten | Wiederholung |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-09-28 | LAYA vs JEV | **4 – 6** | 355 ms / 234 ms | 24.9% / 0.4% | 258 / 166 | $0.0291 | [ansehen](https://jhonsu01.github.io/chess-war/?m=20260928-171033-laya-vs-jev&lang=de) |
 <!-- RESULTS:END -->
+
+### Erstes Match · 2026-09-28
+
+- **Jev gewann 6–4** in 10 Partien: 2 Siege durch Matt, 8 Remis, keine Niederlage. Laya gewann keine Partie.
+- **Jev war schneller**, sogar über das Internet: p50 234 ms gegenüber 355 ms für Laya auf der lokalen GPU. Jeder Zug stellt ~15 Fragen, und Laya führt pro Frage einen eigenen Encoder-Durchlauf aus.
+- **Urteilsvermögen:** Der Schild musste 24,9 % von Layas Zügen korrigieren und 0,4 % von Jevs. Roh-ACPL (Stockfish Tiefe 12): Laya 258, Jev 166; grobe Fehler ab 300 cp: 63 gegenüber 38.
+- **Kosten:** Jev verbrauchte 0,029 $ für 694.000 Eingabe-Tokens; Laya lief kostenlos.
+- **8 von 10 Partien endeten durch dreifache Stellungswiederholung:** Beide Modelle sind deterministisch und wiederholen Stellungen, wenn niemand Material gewinnt. Außerdem zog Laya trotz des Labels `bad` in der Eröffnung immer wieder den König.
 
 ## So funktioniert es
 

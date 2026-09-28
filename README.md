@@ -6,6 +6,8 @@ Pixel-art chess between two **System One** decision models that receive **the ex
 
 **▶ Watch the replays (10 languages): https://jhonsu01.github.io/chess-war/**
 
+![Chess War viewer: Jev mates Laya in game 2](docs/assets/screenshot.png)
+
 | | **Laya** | **Jev** |
 | --- | --- | --- |
 | Kind | open weights (Apache 2.0) | hosted API |
@@ -18,8 +20,18 @@ Pixel-art chess between two **System One** decision models that receive **the ex
 Updated automatically by `chess-war publish`. Latency, shield and ACPL are shown as *Laya / Jev* (lower is better).
 
 <!-- RESULTS:START -->
-_No published matches yet._
+| Date | Match | Points | p50 latency | Shield (OVERRIDDEN) | Raw ACPL | Cost | Replay |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-09-28 | LAYA vs JEV | **4 – 6** | 355 ms / 234 ms | 24.9% / 0.4% | 258 / 166 | $0.0291 | [watch](https://jhonsu01.github.io/chess-war/?m=20260928-171033-laya-vs-jev&lang=en) |
 <!-- RESULTS:END -->
+
+### First match · 2026-09-28
+
+- **Jev won 6–4** over 10 games: 2 wins by checkmate, 8 draws, no losses. Laya did not win a game.
+- **Jev was faster**, even over the internet: p50 234 ms vs 355 ms for Laya on the local GPU. Each turn asks ~15 questions and Laya runs one encoder pass per question.
+- **Judgment:** the shield had to correct 24.9% of Laya's moves and 0.4% of Jev's. Raw ACPL (Stockfish depth 12): Laya 258, Jev 166; blunders of 300+ cp: 63 vs 38.
+- **Cost:** Jev spent $0.029 on 694k input tokens; Laya ran for free.
+- **8 of 10 games ended in threefold repetition:** both models are deterministic and repeat positions when nobody wins material. Laya also kept walking its king in the opening despite the `bad` label.
 
 ## How it works
 

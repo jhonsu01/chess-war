@@ -6,6 +6,8 @@ Scacchi in pixel art tra due modelli decisionali **System One** che ricevono, mo
 
 **▶ Guarda i replay (10 lingue): https://jhonsu01.github.io/chess-war/?lang=it**
 
+![Visualizzatore di Chess War: Jev dà matto a Laya nella partita 2](../docs/assets/screenshot.png)
+
 | | **Laya** | **Jev** |
 | --- | --- | --- |
 | Tipo | pesi aperti (Apache 2.0) | API ospitata |
@@ -18,8 +20,18 @@ Scacchi in pixel art tra due modelli decisionali **System One** che ricevono, mo
 Aggiornati automaticamente da `chess-war publish`. Latenza, scudo e ACPL sono mostrati come *Laya / Jev* (più basso è meglio).
 
 <!-- RESULTS:START -->
-_Nessun match pubblicato finora._
+| Data | Match | Punti | Latenza p50 | Scudo (OVERRIDDEN) | ACPL grezzo | Costo | Replay |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-09-28 | LAYA vs JEV | **4 – 6** | 355 ms / 234 ms | 24.9% / 0.4% | 258 / 166 | $0.0291 | [guarda](https://jhonsu01.github.io/chess-war/?m=20260928-171033-laya-vs-jev&lang=it) |
 <!-- RESULTS:END -->
+
+### Primo match · 2026-09-28
+
+- **Jev ha vinto 6–4** su 10 partite: 2 vittorie per scacco matto, 8 patte, nessuna sconfitta. Laya non ha vinto nessuna partita.
+- **Jev è stato più veloce**, pur passando da Internet: p50 di 234 ms contro 355 ms di Laya sulla GPU locale. Ogni mossa pone ~15 domande e Laya esegue un passaggio dell'encoder per ciascuna.
+- **Giudizio:** lo scudo ha dovuto correggere il 24,9% delle mosse di Laya e lo 0,4% di quelle di Jev. ACPL grezzo (Stockfish profondità 12): Laya 258, Jev 166; errori gravi da 300+ cp: 63 contro 38.
+- **Costo:** Jev ha speso 0,029 $ per 694k token in ingresso; Laya ha girato gratis.
+- **8 partite su 10 sono finite per triplice ripetizione:** entrambi i modelli sono deterministici e ripetono le posizioni quando nessuno guadagna materiale. Inoltre Laya ha continuato a muovere il re in apertura nonostante l'etichetta `bad`.
 
 ## Come funziona
 

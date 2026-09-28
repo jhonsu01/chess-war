@@ -6,6 +6,8 @@ Des échecs en pixel art entre deux modèles de décision **System One** qui re�
 
 **▶ Voir les rediffusions (10 langues) : https://jhonsu01.github.io/chess-war/?lang=fr**
 
+![Visionneuse Chess War : Jev mate Laya dans la partie 2](../docs/assets/screenshot.png)
+
 | | **Laya** | **Jev** |
 | --- | --- | --- |
 | Type | poids ouverts (Apache 2.0) | API hébergée |
@@ -18,8 +20,18 @@ Des échecs en pixel art entre deux modèles de décision **System One** qui re�
 Mis à jour automatiquement par `chess-war publish`. Latence, bouclier et ACPL sont affichés sous la forme *Laya / Jev* (plus bas = mieux).
 
 <!-- RESULTS:START -->
-_Aucun match publié pour l'instant._
+| Date | Match | Points | Latence p50 | Bouclier (OVERRIDDEN) | ACPL brut | Coût | Rediffusion |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-09-28 | LAYA vs JEV | **4 – 6** | 355 ms / 234 ms | 24.9% / 0.4% | 258 / 166 | $0.0291 | [voir](https://jhonsu01.github.io/chess-war/?m=20260928-171033-laya-vs-jev&lang=fr) |
 <!-- RESULTS:END -->
+
+### Premier match · 2026-09-28
+
+- **Jev a gagné 6–4** en 10 parties : 2 victoires par mat, 8 nulles, aucune défaite. Laya n'a gagné aucune partie.
+- **Jev a été plus rapide**, même via Internet : p50 de 234 ms contre 355 ms pour Laya sur le GPU local. Chaque tour pose ~15 questions et Laya fait une passe d'encodeur par question.
+- **Jugement :** le bouclier a dû corriger 24,9 % des coups de Laya et 0,4 % de ceux de Jev. ACPL brut (Stockfish profondeur 12) : Laya 258, Jev 166 ; gaffes de 300+ cp : 63 contre 38.
+- **Coût :** Jev a dépensé 0,029 $ pour 694k tokens d'entrée ; Laya a tourné gratuitement.
+- **8 parties sur 10 se sont terminées par triple répétition :** les deux modèles sont déterministes et répètent les positions quand personne ne gagne de matériel. Laya a aussi continué à promener son roi dans l'ouverture malgré l'étiquette `bad`.
 
 ## Comment ça marche
 

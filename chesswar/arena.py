@@ -334,7 +334,7 @@ class Arena:
                 games.append(g | {"plies": [{k: v for k, v in p.items() if k != "fen_before"} for p in g["plies"]]})
         return {
             "id": self.id,
-            "date": self.started.isoformat(timespec="seconds"),
+            "date": self.started.astimezone().isoformat(timespec="seconds"),
             "status": self.status,
             "p1": self.cfg.p1,
             "p2": self.cfg.p2,
