@@ -1,0 +1,63 @@
+# chess-war: Laya (local, GPU) vs Jev (TypeSafe API) playing chess.
+#
+#   docker compose up -d --wait laya                 # start Laya and wait until it is loaded
+#   docker compose run --rm --service-ports arena    # play the match (viewer on :8080)
+#
+# The Jev key goes in .env (TYPESAFE_API_KEY=...). See the README.
+name: chess-war
+
+services:
+  laya:
+    build:
+      context: .
+      dockerfile: docker/laya.Dockerfile
+      args:
+        TORCH_INDEX: ${LAYA_TORCH_INDEX:-cu130}
+    image: chess-war/laya:0.3.21
+    environment:
+      LAYA_DEVICE: ${LAYA_DEVICE:-cuda}
+      LAYA_PRELOAD: "1"
+      # Resident checkpoint. typed-decisions scored best in `chess-war probe`.
+      # To compare all three: LAYA_MODELS=english,multilingual,typed-decisions (~5 GB of VRAM).
+      LAYA_MODELS: ${LAYA_MODELS:-typed-decisions}
+      LAYA_MAX_LOADED: ${LAYA_MAX_LOADED:-1}
+      LAYA_LOG_LEVEL: ${LAYA_LOG_LEVEL:-warning}
+    ports:
+      # Loopback only: laya-serve has no authentication.
+      - "127.0.0.1:${LAYA_PORT:-8000}:8000"
+    volumes:
+      - laya-models:/models/huggingface
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    restart: unless-stopped
+
+  arena:
+    build:
+      context: .
+      dockerfile: docker/arena.Dockerfile
+    image: chess-war/arena:latest
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      LAYA_URL: http://laya:8000
+      CHESSWAR_HOST: 0.0.0.0
+    ports:
+      - "127.0.0.1:${VIEWER_PORT:-8080}:8080"
+    volumes:
+      - ./results:/app/results
+      - ./docs:/app/docs
+      - ./README.md:/app/README.md
+      - ./i18n:/app/i18n
+    depends_on:
+      laya:
+        condition: service_healthy
+    profiles: ["arena"]
+
+volumes:
+  laya-models:

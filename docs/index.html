@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chess War · Laya vs Jev</title>
+  <meta name="description" content="Laya (local) vs Jev (TypeSafe API) playing pixel-art chess through the same typed questions.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <label class="lang-pick"><span data-i18n="lang">Language</span>
+      <select id="s-lang" aria-label="Language"></select>
+    </label>
+    <h1><span id="t-p1" class="p1">LAYA</span> <span class="vs">VS</span> <span id="t-p2" class="p2">JEV</span></h1>
+    <p class="sub" id="subtitle" data-i18n="sub"></p>
+    <div class="live-badge" id="live-badge" data-i18n="live" hidden></div>
+  </header>
+
+  <main class="arena">
+    <section class="panel" id="panel-p1" aria-live="polite"></section>
+
+    <section class="board-wrap">
+      <div class="game-head" id="game-head">&nbsp;</div>
+      <div class="board-box">
+        <canvas id="board" width="576" height="576" aria-label="Chess board"></canvas>
+        <div class="banner" id="banner" hidden></div>
+      </div>
+      <div class="controls" id="controls">
+        <button id="b-first" data-i18n-title="t_first">|&lt;</button>
+        <button id="b-prev" data-i18n-title="t_prev">&lt;</button>
+        <button id="b-play" class="wide" data-i18n-title="t_play">▶</button>
+        <button id="b-next" data-i18n-title="t_next">&gt;</button>
+        <button id="b-last" data-i18n-title="t_last">&gt;|</button>
+        <select id="s-game" aria-label="Game"></select>
+        <select id="s-speed" aria-label="Speed">
+          <option value="1200" data-i18n="slow"></option>
+          <option value="600" data-i18n="normal" selected></option>
+          <option value="250" data-i18n="fast"></option>
+        </select>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-p2" aria-live="polite"></section>
+  </main>
+
+  <section class="lower">
+    <div class="card">
+      <h2 data-i18n="moves"></h2>
+      <ol class="moves" id="moves"></ol>
+      <p class="legend" data-i18n-html="legend"></p>
+    </div>
+    <div class="card">
+      <h2 data-i18n="summary"></h2>
+      <div class="table-scroll"><table class="summary" id="summary"></table></div>
+      <div class="games" id="games"></div>
+    </div>
+  </section>
+
+  <section class="card matches-card">
+    <h2 data-i18n="matches"></h2>
+    <div class="matches" id="matches"><p class="muted" data-i18n="loading"></p></div>
+  </section>
+
+  <section class="card how">
+    <h2 data-i18n="how_t"></h2>
+    <p data-i18n-html="how1"></p>
+    <p data-i18n-html="how2"></p>
+  </section>
+
+  <footer class="foot">
+    <span data-i18n="inspired"></span> <a href="https://github.com/rythmn1111/doom-war">doom-war</a> ·
+    Laya: <a href="https://huggingface.co/convaiinnovations/laya">convaiinnovations/laya</a> (Apache 2.0) ·
+    Jev: <a href="https://docs.typesafe.ai">TypeSafe</a>
+  </footer>
+
+  <script src="i18n.js"></script>
+  <script src="sprites.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

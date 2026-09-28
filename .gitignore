@@ -1,0 +1,22 @@
+# Secretos: NUNCA commitear
+.env
+jev.txt
+*.key
+.secrets/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+build/
+dist/
+
+# Resultados crudos locales (lo publicado vive en docs/data/)
+results/*
+!results/.gitkeep
+
+# Indices y temporales
+.codegraph/
+.tmp/
